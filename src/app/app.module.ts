@@ -5,9 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PeliculasComponent } from './componentes/peliculas/peliculas.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MenuComponent } from './componentes/menu/menu.component';
+import { SeriesComponent } from './componentes/series/series.component';
 
 @NgModule({
-  declarations: [AppComponent, PeliculasComponent],
+  declarations: [AppComponent, PeliculasComponent, MenuComponent, SeriesComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
