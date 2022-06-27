@@ -6,7 +6,7 @@ import { SeriesComponent } from './componentes/series/series.component';
 const routes: Routes = [
   { path: 'peliculas', component: PeliculasComponent },
   { path: 'series', component: SeriesComponent },
-  { path: '', redirectTo: '/peliculas', pathMatch: 'full' },
+  { path: '**', redirectTo: '/peliculas', pathMatch: 'full' },
 ];
 
 @NgModule({

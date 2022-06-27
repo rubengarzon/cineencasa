@@ -15,7 +15,7 @@ export class PeliculasComponent implements OnInit {
 
   ngOnInit(): void {
     this.peliculasServicio
-      .obtenerUltimasPeliculas()
+      .obtenerPeliculasPopulares()
       .subscribe((data: PeliculaObject) => {
         this.listaPeliculas = data.results;
       });

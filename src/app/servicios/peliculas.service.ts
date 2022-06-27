@@ -4,6 +4,7 @@ import {
   Pelicula,
   PeliculaObject,
 } from '../modelos/ultimaspeliculas.interface';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class PeliculasService {
 
   constructor(private http: HttpClient) {}
 
-  obtenerUltimasPeliculas() {
+  obtenerPeliculasPopulares(): Observable<PeliculaObject> {
     return this.http.get<PeliculaObject>(this.apiUrl);
   }
 }
