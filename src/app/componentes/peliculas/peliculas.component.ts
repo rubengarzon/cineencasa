@@ -14,9 +14,31 @@ export class PeliculasComponent implements OnInit {
   constructor(private peliculasServicio: PeliculasService) {}
 
   ngOnInit(): void {
+    this.mostrarPeliculasPagina1();
+  }
+
+  mostrarPeliculasPagina1() {
     this.peliculasServicio
       .obtenerPeliculasPopulares()
       .subscribe((data: PeliculaObject) => {
+        this.listaPeliculas = data.results;
+      });
+  }
+
+  mostrarPeliculasPagina2() {
+    this.peliculasServicio
+      .obtenerPeliculasPopularesPagina2()
+      .subscribe((data: PeliculaObject) => {
+        this.listaPeliculas = [];
+        this.listaPeliculas = data.results;
+      });
+  }
+
+  mostrarPeliculasPagina3() {
+    this.peliculasServicio
+      .obtenerPeliculasPopularesPagina3()
+      .subscribe((data: PeliculaObject) => {
+        this.listaPeliculas = [];
         this.listaPeliculas = data.results;
       });
   }
