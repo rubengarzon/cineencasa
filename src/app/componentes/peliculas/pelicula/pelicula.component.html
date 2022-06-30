@@ -1,0 +1,14 @@
+<app-menu></app-menu>
+<img src="{{urlImagen}}{{detallePelicula?.backdrop_path}}" width="700">
+<h1>{{detallePelicula?.title}}</h1>
+<p>{{detallePelicula?.overview}}</p>
+<ng-container *ngIf="control; else noStream">
+  <div *ngFor="let item of plataforma">
+    <span>Disponible en</span>
+    <img src="{{urlImagen}}{{item.logo_path}}" width="70">
+    <p class="fuente">Fuente de información: JustWatch</p>
+  </div>
+</ng-container>
+<ng-template #noStream>
+  <p class="noStream">No disponible en Stream</p>
+</ng-template>
