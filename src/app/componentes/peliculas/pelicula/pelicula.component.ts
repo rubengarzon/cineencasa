@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { PeliculasService } from '../../../servicios/peliculas.service';
-import { DetallePelicula } from '../../../modelos/pelicula.interface';
+import { DetallePelicula, Genre } from '../../../modelos/pelicula.interface';
 import { Plataforma, Flatrate13 } from '../../../modelos/plataforma.interface';
+import { Video } from '../../../modelos/video.interface';
 
 @Component({
   selector: 'app-pelicula',
@@ -15,6 +16,10 @@ export class PeliculaComponent implements OnInit {
   urlImagen: string = 'https://image.tmdb.org/t/p/original';
   plataforma!: Flatrate13[];
   control: boolean = false;
+  video!: Video;
+  key: string = '';
+  urlYoutube: string = '';
+  generos!: Genre[];
 
   constructor(
     private rutaActiva: ActivatedRoute,
@@ -27,6 +32,8 @@ export class PeliculaComponent implements OnInit {
       .obtenerPelicula(this.id)
       .subscribe((pelicula: DetallePelicula) => {
         this.detallePelicula = pelicula;
+        this.generos = pelicula.genres;
+        console.log(this.detallePelicula);
       });
     this.peliculasService
       .obtenerPlataforma(this.id)
@@ -38,5 +45,10 @@ export class PeliculaComponent implements OnInit {
           this.control = false;
         }
       });
+    this.peliculasService.obtenerVideos(this.id).subscribe((videos) => {
+      this.key = videos.results[0].key;
+      this.urlYoutube = `https://www.youtube.com/embed/${this.key}`;
+      document.querySelector('iframe')?.setAttribute('src', this.urlYoutube);
+    });
   }
 }

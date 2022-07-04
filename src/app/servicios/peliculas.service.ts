@@ -7,6 +7,7 @@ import {
 import { Observable } from 'rxjs';
 import { DetallePelicula } from '../modelos/pelicula.interface';
 import { Plataforma } from '../modelos/plataforma.interface';
+import { Videos } from '../modelos/video.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,7 @@ export class PeliculasService {
     'https://api.themoviedb.org/3/movie/popular?api_key=7d6cebd7375363a80d7b3517c7036ba6&language=es-ES&page=3';
   apiUrl4 = '';
   urlObtenerPlataforma = '';
+  urlObtenerVideos = '';
 
   constructor(private http: HttpClient) {}
 
@@ -40,8 +42,13 @@ export class PeliculasService {
     return this.http.get<DetallePelicula>(this.apiUrl4);
   }
 
-  obtenerPlataforma(id: string): Observable<Plataforma>{
+  obtenerPlataforma(id: string): Observable<Plataforma> {
     this.urlObtenerPlataforma = `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=7d6cebd7375363a80d7b3517c7036ba6&`;
     return this.http.get<Plataforma>(this.urlObtenerPlataforma);
+  }
+
+  obtenerVideos(id: string): Observable<Videos> {
+    this.urlObtenerVideos = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=7d6cebd7375363a80d7b3517c7036ba6&language=es-ES`;
+    return this.http.get<Videos>(this.urlObtenerVideos);
   }
 }

@@ -1,14 +1,39 @@
 <app-menu></app-menu>
 <img src="{{urlImagen}}{{detallePelicula?.backdrop_path}}" width="700">
+<div class="bloque">
+  <div class="detallePelicula">
+    <span class="titulo">LANZAMIENTO</span>
+    <span>
+      {{detallePelicula?.release_date}}
+    </span>
+  </div>
+  <div class="detallePelicula">
+    <span class="titulo">CALIFICACIÓN</span>
+    <span>
+      {{detallePelicula?.vote_average}}
+    </span>
+  </div>
+  <div class="detallePelicula">
+    <span class="titulo">GÉNEROS</span>
+    <span *ngFor="let item of generos">
+      {{item.name}}
+    </span>
+  </div>
+</div>
 <h1>{{detallePelicula?.title}}</h1>
 <p>{{detallePelicula?.overview}}</p>
 <ng-container *ngIf="control; else noStream">
-  <div *ngFor="let item of plataforma">
+  <div *ngFor="let item of plataforma" class="plataforma">
     <span>Disponible en</span>
     <img src="{{urlImagen}}{{item.logo_path}}" width="70">
     <p class="fuente">Fuente de información: JustWatch</p>
   </div>
 </ng-container>
+<div style="text-align: center">
+  <iframe width="560" height="315" src="" title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>
+</div>
 <ng-template #noStream>
   <p class="noStream">No disponible en Stream</p>
 </ng-template>

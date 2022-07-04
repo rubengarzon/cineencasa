@@ -10,7 +10,13 @@ import { SeriesComponent } from './componentes/series/series.component';
 import { PeliculaComponent } from './componentes/peliculas/pelicula/pelicula.component';
 
 @NgModule({
-  declarations: [AppComponent, PeliculasComponent, MenuComponent, SeriesComponent, PeliculaComponent],
+  declarations: [
+    AppComponent,
+    PeliculasComponent,
+    MenuComponent,
+    SeriesComponent,
+    PeliculaComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
