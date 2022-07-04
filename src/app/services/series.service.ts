@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Serie, Series } from '../interfaces/seriespopulares.interface';
+import { Series } from '../interfaces/seriespopulares.interface';
+import { TV } from '../interfaces/serie.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -31,8 +32,8 @@ export class SeriesService {
    * @param tv_id string
    * @returns Observable<Serie>
    */
-  obtenerDetalleSerie(tv_id: string): Observable<Serie> {
+  obtenerDetalleSerie(tv_id: string): Observable<TV> {
     this.url4 = `https://api.themoviedb.org/3/tv/${tv_id}?api_key=7d6cebd7375363a80d7b3517c7036ba6&language=es-ES`;
-    return this.http.get<Serie>(this.url4);
+    return this.http.get<TV>(this.url4);
   }
 }
