@@ -3,7 +3,7 @@
 <div class="bloque">
   <div class="row">
     <div class="card" style="width: 18rem;" *ngFor="let item of listaSeries">
-      <a routerLink="">
+      <a routerLink="/serie/{{item.id}}">
         <img src={{urlImagen}}{{item.poster_path}} class="card-img-top" alt="...">
       </a>
     </div>
