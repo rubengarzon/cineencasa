@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Pelicula } from 'src/app/modelos/ultimaspeliculas.interface';
-import { PeliculasService } from '../../servicios/peliculas.service';
-import { PeliculaObject } from '../../modelos/ultimaspeliculas.interface';
+import { Pelicula } from 'src/app/interfaces/ultimaspeliculas.interface';
+import { PeliculasService } from '../../services/peliculas.service';
+import { PeliculaObject } from '../../interfaces/ultimaspeliculas.interface';
 
 @Component({
   selector: 'app-peliculas',

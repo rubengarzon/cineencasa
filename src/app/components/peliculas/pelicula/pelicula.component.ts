@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { PeliculasService } from '../../../servicios/peliculas.service';
-import { DetallePelicula, Genre } from '../../../modelos/pelicula.interface';
-import { Plataforma, Flatrate13 } from '../../../modelos/plataforma.interface';
-import { Video } from '../../../modelos/video.interface';
+import { PeliculasService } from '../../../services/peliculas.service';
+import { DetallePelicula, Genre } from '../../../interfaces/pelicula.interface';
+import { Plataforma, Flatrate13 } from '../../../interfaces/plataforma.interface';
+import { Video } from '../../../interfaces/video.interface';
 
 @Component({
   selector: 'app-pelicula',

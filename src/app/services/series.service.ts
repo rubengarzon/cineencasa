@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Series } from '../modelos/seriespopulares.interface';
+import { Series } from '../interfaces/seriespopulares.interface';
 
 @Injectable({
   providedIn: 'root',

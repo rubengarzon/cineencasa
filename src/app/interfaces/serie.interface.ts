@@ -59,7 +59,7 @@ export interface SpokenLanguage {
   name: string;
 }
 
-export interface Serie {
+export interface TV {
   backdrop_path: string;
   created_by: CreatedBy[];
   episode_run_time: number[];

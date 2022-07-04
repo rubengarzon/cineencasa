@@ -3,11 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import {
   Pelicula,
   PeliculaObject,
-} from '../modelos/ultimaspeliculas.interface';
+} from '../interfaces/ultimaspeliculas.interface';
 import { Observable } from 'rxjs';
-import { DetallePelicula } from '../modelos/pelicula.interface';
-import { Plataforma } from '../modelos/plataforma.interface';
-import { Videos } from '../modelos/video.interface';
+import { DetallePelicula } from '../interfaces/pelicula.interface';
+import { Plataforma } from '../interfaces/plataforma.interface';
+import { Videos } from '../interfaces/video.interface';
 
 @Injectable({
   providedIn: 'root',

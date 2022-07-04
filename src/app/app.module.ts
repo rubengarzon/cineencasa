@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PeliculasComponent } from './componentes/peliculas/peliculas.component';
+import { PeliculasComponent } from './components/peliculas/peliculas.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MenuComponent } from './componentes/menu/menu.component';
-import { SeriesComponent } from './componentes/series/series.component';
-import { PeliculaComponent } from './componentes/peliculas/pelicula/pelicula.component';
-import { SerieComponent } from './componentes/series/serie/serie.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { SeriesComponent } from './components/series/series.component';
+import { PeliculaComponent } from './components/peliculas/pelicula/pelicula.component';
+import { SerieComponent } from './components/series/serie/serie.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { SerieComponent } from './componentes/series/serie/serie.component';
     MenuComponent,
     SeriesComponent,
     PeliculaComponent,
-    SerieComponent
+    SerieComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
