@@ -4,8 +4,8 @@ import { PeliculasComponent } from './components/peliculas/peliculas.component';
 import { SeriesComponent } from './components/series/series.component';
 import { PeliculaComponent } from './components/peliculas/pelicula/pelicula.component';
 import { SerieComponent } from './components/series/serie/serie.component';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 const routes: Routes = [

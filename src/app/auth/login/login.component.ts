@@ -23,10 +23,13 @@ export class LoginComponent implements OnInit {
     this.userService
       .login(this.formLog.value)
       .then((response: any) => {
-        console.log(response);
         this.userService.isLogged = true;
         this.router.navigate(['/peliculas']);
       })
-      .catch((error: any) => console.log(error));
+      .catch((error: any) => {
+        if (error.message == 'Firebase: Error (auth/user-not-found).') {
+          window.alert('El usuario no existe');
+        }
+      });
   }
 }
