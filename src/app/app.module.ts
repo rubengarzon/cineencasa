@@ -9,6 +9,12 @@ import { MenuComponent } from './components/menu/menu.component';
 import { SeriesComponent } from './components/series/series.component';
 import { PeliculaComponent } from './components/peliculas/pelicula/pelicula.component';
 import { SerieComponent } from './components/series/serie/serie.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,8 +24,17 @@ import { SerieComponent } from './components/series/serie/serie.component';
     SeriesComponent,
     PeliculaComponent,
     SerieComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
