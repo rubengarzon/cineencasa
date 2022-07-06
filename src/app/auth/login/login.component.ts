@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +15,20 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./login.component.sass'],
 })
 export class LoginComponent implements OnInit {
-  formLog: FormGroup;
-  constructor(private userService: UserService, private router: Router) {
-    this.formLog = new FormGroup({
-      email: new FormControl(),
-      password: new FormControl(),
-    });
+  formLog!: FormGroup;
+
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private readonly fb: FormBuilder,
+    private toastr: ToastrService
+  ) {}
+
+  ngOnInit(): void {
+    this.formLog = this.initForm();
   }
 
-  ngOnInit(): void {}
-
-  onSubmit() {
+  onLogin(): void {
     this.userService
       .login(this.formLog.value)
       .then((response: any) => {
@@ -28,8 +37,18 @@ export class LoginComponent implements OnInit {
       })
       .catch((error: any) => {
         if (error.message == 'Firebase: Error (auth/user-not-found).') {
-          window.alert('El usuario no existe');
+          this.toastr.error('No existe el usuario');
+        }
+        if (error.message == 'Firebase: Error (auth/wrong-password).') {
+          this.toastr.error('La contraseña es incorrecta');
         }
       });
+  }
+
+  initForm(): FormGroup {
+    return this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
   }
 }
