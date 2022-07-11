@@ -20,6 +20,10 @@ export class UserService {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
 
+  getUserCurrent() {
+    return this.auth.currentUser;
+  }
+
   logout() {
     return signOut(this.auth);
   }

@@ -4,6 +4,7 @@ import { PeliculasService } from '../../services/peliculas.service';
 import { PeliculaObject } from '../../interfaces/ultimaspeliculas.interface';
 import { UserService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Like } from '../../interfaces/like.interface';
 
 @Component({
   selector: 'app-peliculas',
@@ -11,6 +12,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./peliculas.component.sass'],
 })
 export class PeliculasComponent implements OnInit {
+  userCurrent!: string | null | undefined;
+  id!: string;
+  like!: Like;
   listaPeliculas!: Pelicula[];
   isLogged: boolean = false;
   activoPagina1: boolean = false;
@@ -27,8 +31,11 @@ export class PeliculasComponent implements OnInit {
     this.activoPagina1 = true;
     this.mostrarPeliculasPagina1();
     this.isLogged = this.userService.isLogged;
+    this.userCurrent = this.userService.getUserCurrent()?.email;
   }
-
+  /**
+   * Muestra las peliculas de la pagina 1
+   */
   mostrarPeliculasPagina1() {
     this.activoPagina2 = false;
     this.activoPagina3 = false;
@@ -39,7 +46,9 @@ export class PeliculasComponent implements OnInit {
         this.listaPeliculas = data.results;
       });
   }
-
+  /**
+   * Muestra las peliculas de la pagina 2
+   */
   mostrarPeliculasPagina2() {
     this.activoPagina1 = false;
     this.activoPagina3 = false;
@@ -51,7 +60,9 @@ export class PeliculasComponent implements OnInit {
         this.listaPeliculas = data.results;
       });
   }
-
+  /**
+   * Muestra las peliculas de la pagina 3
+   */
   mostrarPeliculasPagina3() {
     this.activoPagina1 = false;
     this.activoPagina2 = false;
@@ -63,10 +74,25 @@ export class PeliculasComponent implements OnInit {
         this.listaPeliculas = data.results;
       });
   }
-
-  addLike() {
+  /**
+   * Añade un like de la pelicula
+   * @param name nombre de la pelicula
+   * @param id id de la pelicula
+   */
+  addLike(name: string, id: number) {
     if (!this.isLogged) {
       this.toast.info('Es necesario iniciar sesión');
+    } else {
+      this.id = id.toString();
+      this.like = { id: id, name: name };
+      this.peliculasServicio
+        .addLike(this.like, this.id, this.userCurrent)
+        .then((data) => {
+          this.toast.success(`${name} añadido a la lista`);
+        })
+        .catch((error) => {
+          this.toast.error('Intentelo de nuevo más tarde');
+        });
     }
   }
 }
