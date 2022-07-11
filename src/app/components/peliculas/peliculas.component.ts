@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Pelicula } from 'src/app/interfaces/ultimaspeliculas.interface';
 import { PeliculasService } from '../../services/peliculas.service';
 import { PeliculaObject } from '../../interfaces/ultimaspeliculas.interface';
+import { UserService } from '../../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-peliculas',
@@ -10,15 +12,21 @@ import { PeliculaObject } from '../../interfaces/ultimaspeliculas.interface';
 })
 export class PeliculasComponent implements OnInit {
   listaPeliculas!: Pelicula[];
+  isLogged: boolean = false;
   activoPagina1: boolean = false;
   activoPagina2: boolean = false;
   activoPagina3: boolean = false;
   urlImagen: string = 'https://image.tmdb.org/t/p/original/';
-  constructor(private peliculasServicio: PeliculasService) {}
+  constructor(
+    private peliculasServicio: PeliculasService,
+    private userService: UserService,
+    private toast: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.activoPagina1 = true;
     this.mostrarPeliculasPagina1();
+    this.isLogged = this.userService.isLogged;
   }
 
   mostrarPeliculasPagina1() {
@@ -54,5 +62,11 @@ export class PeliculasComponent implements OnInit {
         this.listaPeliculas = [];
         this.listaPeliculas = data.results;
       });
+  }
+
+  addLike() {
+    if (!this.isLogged) {
+      this.toast.info('Es necesario iniciar sesión');
+    }
   }
 }
