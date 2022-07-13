@@ -15,6 +15,8 @@ import {
   addDoc,
   setDoc,
   doc,
+  getDoc,
+  collectionData,
 } from '@angular/fire/firestore';
 import { Like } from '../interfaces/like.interface';
 
@@ -85,5 +87,20 @@ export class PeliculasService {
     const likeDoc = doc(this.firestore, 'likes', userCurrent, 'likes', id);
 
     return setDoc(likeDoc, like);
+  }
+  /**
+   * * Obtiene los likes que ha dado el usuario
+   * @param userCurrent
+   * @returns promise
+   */
+  getLikes(userCurrent: any): Observable<Like[]> {
+    const likeRef = collection(
+      this.firestore,
+      'likes',
+      'prueba@gmail.com',
+      'likes'
+    );
+
+    return collectionData(likeRef, { idField: 'id' }) as Observable<Like[]>;
   }
 }
