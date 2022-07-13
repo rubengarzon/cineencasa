@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { MyListComponent } from './components/my-list/my-list.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     SerieComponent,
     LoginComponent,
     RegisterComponent,
+    MyListComponent,
   ],
   imports: [
     BrowserModule,

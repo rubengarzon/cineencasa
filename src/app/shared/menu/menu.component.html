@@ -12,6 +12,9 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/series">Series</a>
       </li>
+      <li class="nav-item" *ngIf="isLogged">
+        <a class="nav-link" routerLink="/milista">Mi lista</a>
+      </li>
       <li class="nav-item" *ngIf="!isLogged">
         <a class="nav-link" routerLink="/login">¡Inicia Sesión!</a>
       </li>

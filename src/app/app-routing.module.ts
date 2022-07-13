@@ -6,13 +6,23 @@ import { PeliculaComponent } from './components/peliculas/pelicula/pelicula.comp
 import { SerieComponent } from './components/series/serie/serie.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
-import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import {
+  AuthGuard,
+  canActivate,
+  redirectUnauthorizedTo,
+} from '@angular/fire/auth-guard';
+import { MyListComponent } from './components/my-list/my-list.component';
+import { PermissionsGuard } from './permissions.guard';
 
 const routes: Routes = [
   {
     path: 'peliculas',
     component: PeliculasComponent,
-    //...canActivate(() => redirectUnauthorizedTo(['/register'])),
+  },
+  {
+    path: 'milista',
+    canActivate: [PermissionsGuard],
+    component: MyListComponent,
   },
   { path: 'series', component: SeriesComponent },
   { path: 'pelicula/:id', component: PeliculaComponent },
