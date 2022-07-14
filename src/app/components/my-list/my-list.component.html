@@ -1,5 +1,6 @@
 <app-menu></app-menu>
 <h2>Mi lista</h2>
 <ul class="list-group" *ngFor="let item of likes">
-  <li class="list-group-item"><img src="../../../assets/delete.png" width="20" alt="Borrar">{{item.name}}</li>
+  <li class="list-group-item"><img src="../../../assets/delete.png" width="20" alt="Borrar"
+      (click)="deleteLike(item.id, item.name)">{{item.name}}</li>
 </ul>

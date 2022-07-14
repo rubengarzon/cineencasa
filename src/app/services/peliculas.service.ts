@@ -15,6 +15,7 @@ import {
   addDoc,
   setDoc,
   doc,
+  deleteDoc,
   getDoc,
   collectionData,
 } from '@angular/fire/firestore';
@@ -97,10 +98,18 @@ export class PeliculasService {
     const likeRef = collection(
       this.firestore,
       'likes',
-      'prueba@gmail.com',
+      userCurrent.email,
       'likes'
     );
 
     return collectionData(likeRef, { idField: 'id' }) as Observable<Like[]>;
+  }
+
+  deleteLike(id: number, userCurrent: any) {
+    const likeDocRef = doc(
+      this.firestore,
+      `likes/${userCurrent.email}/likes/${id}`
+    );
+    return deleteDoc(likeDocRef);
   }
 }
