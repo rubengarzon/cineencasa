@@ -5,6 +5,7 @@ import { PeliculaObject } from '../../interfaces/ultimaspeliculas.interface';
 import { UserService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Like } from '../../interfaces/like.interface';
+import { LikesService } from 'src/app/services/likes.service';
 
 @Component({
   selector: 'app-peliculas',
@@ -23,6 +24,7 @@ export class PeliculasComponent implements OnInit {
   urlImagen: string = 'https://image.tmdb.org/t/p/original/';
   constructor(
     private peliculasServicio: PeliculasService,
+    private likesServicio: LikesService,
     private userService: UserService,
     private toast: ToastrService
   ) {}
@@ -85,7 +87,7 @@ export class PeliculasComponent implements OnInit {
     } else {
       this.id = id.toString();
       this.like = { id: id, name: name };
-      this.peliculasServicio
+      this.likesServicio
         .addLike(this.like, this.id, this.userCurrent)
         .then((data) => {
           this.toast.success(`${name} añadido a la lista`);

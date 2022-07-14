@@ -3,6 +3,7 @@ import { PeliculasService } from '../../services/peliculas.service';
 import { UserService } from '../../services/auth.service';
 import { Like } from 'src/app/interfaces/like.interface';
 import { ToastrService } from 'ngx-toastr';
+import { LikesService } from 'src/app/services/likes.service';
 
 @Component({
   selector: 'app-my-list',
@@ -14,14 +15,14 @@ export class MyListComponent implements OnInit {
   likes!: Like[];
 
   constructor(
-    private peliculasServicio: PeliculasService,
+    private likesServicio: LikesService,
     private auth: UserService,
     private toast: ToastrService
   ) {}
 
   ngOnInit(): void {
     this.userCurrent = this.auth.getUserCurrent();
-    this.peliculasServicio.getLikes(this.userCurrent).subscribe((data) => {
+    this.likesServicio.getLikes(this.userCurrent).subscribe((data) => {
       this.likes = data;
     });
   }
@@ -32,7 +33,7 @@ export class MyListComponent implements OnInit {
    */
   deleteLike(id: number, name: string) {
     if (window.confirm('¿Estás seguro de eliminar esta película?')) {
-      this.peliculasServicio
+      this.likesServicio
         .deleteLike(id, this.userCurrent)
         .then((data) => {
           this.toast.success('Se ha borrado ' + name);
