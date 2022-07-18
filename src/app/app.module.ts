@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PeliculasComponent } from './components/peliculas/peliculas.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MenuComponent } from './shared/menu/menu.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SeriesComponent } from './components/series/series.component';
 import { PeliculaComponent } from './components/peliculas/pelicula/pelicula.component';
 import { SerieComponent } from './components/series/serie/serie.component';
@@ -17,15 +17,14 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { MyListComponent } from './components/my-list/my-list.component';
-
 
 @NgModule({
   declarations: [
     AppComponent,
     PeliculasComponent,
-    MenuComponent,
+    NavbarComponent,
     SeriesComponent,
     PeliculaComponent,
     SerieComponent,

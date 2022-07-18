@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" routerLink="/peliculas">
+    CINEENCASA</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="search-bar">
+    <input type="text" placeholder="Busca tu pelicula o serie favorita.." class="search">
+  </div>
+  <div *ngIf="isLogged; else notlogged" class="user">
+    <img src="{{urlProfilePicture}}" width="40" />
+    <span>{{username}}</span>
+    <img src="../../../assets/arrow.webp" width="30" class="arrow" (click)="openDrop()">
+  </div>
+  <ng-template #notlogged>
+    <a class="nav-link" routerLink="/login">Inicia sesión</a>
+  </ng-template>
+</nav>
+<div *ngIf="flag" class="dropdown">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/peliculas">Peliculas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/series">Series</a>
+    </li>
+    <li class="nav-item" *ngIf="isLogged">
+      <a class="nav-link" routerLink="/milista">Mi lista</a>
+    </li>
+    <li class="nav-item" *ngIf="isLogged">
+      <a class="nav-link cerrarSesion" (click)="cerrarSesion()">Cerrar Sesión</a>
+    </li>
+  </ul>
+</div>
