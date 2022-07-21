@@ -6,7 +6,8 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="search-bar">
-    <input type="text" placeholder="Busca tu pelicula o serie favorita.." class="search">
+    <input type="text" placeholder="Busca tu pelicula o serie favorita.." class="search" [formControl]="inputSearch"
+      (keyup.enter)="onEnter()">
   </div>
   <div *ngIf="isLogged; else notlogged" class="user">
     <img src="{{urlProfilePicture}}" width="40" />

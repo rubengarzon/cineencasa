@@ -13,6 +13,7 @@ import {
 } from '@angular/fire/auth-guard';
 import { MyListComponent } from './components/my-list/my-list.component';
 import { PermissionsGuard } from './permissions.guard';
+import { SearchComponent } from './components/multi/search.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
     canActivate: [PermissionsGuard],
     component: MyListComponent,
   },
+  { path: 'search/:search', component: SearchComponent },
   { path: 'series', component: SeriesComponent },
   { path: 'pelicula/:id', component: PeliculaComponent },
   { path: 'serie/:id', component: SerieComponent },

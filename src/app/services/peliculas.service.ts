@@ -20,6 +20,7 @@ import {
   collectionData,
 } from '@angular/fire/firestore';
 import { Like } from '../interfaces/like.interface';
+import { Search, ResultSearch } from '../interfaces/search.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,9 @@ export class PeliculasService {
   apiUrl4 = '';
   urlObtenerPlataforma = '';
   urlObtenerVideos = '';
+  urlSearch = '';
+  query = '';
+  resultSearch!: ResultSearch[];
 
   constructor(private http: HttpClient, private firestore: Firestore) {}
   /**
@@ -76,5 +80,14 @@ export class PeliculasService {
   obtenerVideos(id: string): Observable<Videos> {
     this.urlObtenerVideos = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=7d6cebd7375363a80d7b3517c7036ba6&language=es-ES`;
     return this.http.get<Videos>(this.urlObtenerVideos);
+  }
+  /**
+   *  Obtiene los resultados de la busqueda
+   * @param query
+   * @returns Observable<Search>
+   */
+  search(query: string): Observable<Search> {
+    this.urlSearch = `https://api.themoviedb.org/3/search/multi?api_key=7d6cebd7375363a80d7b3517c7036ba6&language=es-ES&query=${query}&page=1&include_adult=false`;
+    return this.http.get<Search>(this.urlSearch);
   }
 }
