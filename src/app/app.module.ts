@@ -19,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { MyListComponent } from './components/my-list/my-list.component';
-import { SearchComponent } from './components/multi/search.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [

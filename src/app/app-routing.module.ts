@@ -13,25 +13,25 @@ import {
 } from '@angular/fire/auth-guard';
 import { MyListComponent } from './components/my-list/my-list.component';
 import { PermissionsGuard } from './permissions.guard';
-import { SearchComponent } from './components/multi/search.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
   {
-    path: 'peliculas',
+    path: 'movies',
     component: PeliculasComponent,
   },
   {
-    path: 'milista',
+    path: 'my-list',
     canActivate: [PermissionsGuard],
     component: MyListComponent,
   },
   { path: 'search/:search', component: SearchComponent },
-  { path: 'series', component: SeriesComponent },
-  { path: 'pelicula/:id', component: PeliculaComponent },
-  { path: 'serie/:id', component: SerieComponent },
+  { path: 'tvs', component: SeriesComponent },
+  { path: 'movie/:id', component: PeliculaComponent },
+  { path: 'tv/:id', component: SerieComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegisterComponent },
-  { path: '**', redirectTo: '/peliculas', pathMatch: 'full' },
+  { path: '**', redirectTo: '/movies', pathMatch: 'full' },
 ];
 
 @NgModule({
