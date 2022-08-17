@@ -19,7 +19,7 @@ import { PeliculasService } from '../../services/peliculas.service';
 })
 export class NavbarComponent implements OnInit {
   inputSearch = new FormControl('');
-  urlProfilePicture!: string;
+  urlProfilePicture: string = "../../../assets/profile.png";
   username!: string;
   userCurrent!: string | null | undefined;
   flag: boolean = false;
@@ -36,10 +36,6 @@ export class NavbarComponent implements OnInit {
     this.onSearch();
     this.isLogged = this.userServicio.isLogged;
     this.userCurrent = this.userServicio.getUserCurrent()?.email;
-    this.userServicio.getProfile(this.userCurrent).subscribe((data) => {
-      this.urlProfilePicture = data[0].url;
-      this.username = data[0].usuario;
-    });
   }
   /**
    * Cierra sesión el usuario

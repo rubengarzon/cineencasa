@@ -5,8 +5,16 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from '@angular/fire/auth';
+import {
+  addDoc,
+  setDoc,
+  doc,
+  deleteDoc,
+  getDoc,
+} from '@angular/fire/firestore';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { Avatar } from '../interfaces/avatar.interface';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -16,6 +24,12 @@ export class UserService {
 
   register({ email, password }: any) {
     return createUserWithEmailAndPassword(this.auth, email, password);
+  }
+
+  createAvatar(avatar: Avatar) {
+    const avatarDoc = doc(this.firestore, 'avatar', 'aaa', 'avatarr');
+
+    return setDoc(avatarDoc, avatar);
   }
 
   login({ email, password }: any) {

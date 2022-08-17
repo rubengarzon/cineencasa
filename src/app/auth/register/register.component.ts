@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/peliculas']);
       })
       .catch((error: any) => {
-        this.toastr.error('Se ha producido un error, intentelo de nuevo')
+        this.toastr.error('Se ha producido un error, intentelo de nuevo');
       });
   }
 }
