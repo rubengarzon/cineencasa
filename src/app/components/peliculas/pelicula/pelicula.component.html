@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<img src="{{urlImagen}}{{detallePelicula?.backdrop_path}}" width="700">
+<img src="{{urlImagen}}{{detallePelicula?.backdrop_path}}" width="700" class="img-detallePelicula">
 <div class="bloque">
   <div class="detallePelicula">
     <span class="titulo">LANZAMIENTO</span>
@@ -25,7 +25,7 @@
 <ng-container *ngIf="control; else noStream">
   <div *ngFor="let item of plataforma" class="plataforma">
     <span>Disponible en</span>
-    <img src="{{urlImagen}}{{item.logo_path}}" width="70">
+    <img src="{{urlImagen}}{{item.logo_path}}" width="70" class="icon">
     <p class="fuente">Fuente de información: JustWatch</p>
   </div>
 </ng-container>
