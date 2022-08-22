@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg">
-  <a class="navbar-brand" routerLink="/peliculas">
-    CINEENCASA</a>
+  <div class="navbar-mobile-title">
+    <a class="navbar-brand" routerLink="/peliculas">
+      CINEENCASA</a>
+  </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -9,13 +11,17 @@
     <input type="text" placeholder="Busca tu pelicula o serie favorita.." class="search" [formControl]="inputSearch"
       (keyup.enter)="onEnter()">
   </div>
-  <div *ngIf="isLogged; else notlogged" class="user">
-    <img src="{{urlProfilePicture}}" width="40" />
-    <span>{{userCurrent}}</span>
-    <img src="../../../assets/arrow.webp" width="30" class="arrow" (click)="openDrop()">
+  <div class="container-user">
+    <div *ngIf="isLogged; else notlogged" class="user">
+      <img src="{{urlProfilePicture}}" width="40" />
+      <span>{{userCurrent}}</span>
+      <img src="../../../assets/arrow.webp" width="30" class="arrow" (click)="openDrop()">
+    </div>
   </div>
   <ng-template #notlogged>
-    <a class="nav-link" routerLink="/login">Inicia sesión</a>
+    <div class="container-nav-link">
+      <a class="nav-link" routerLink="/login">Inicia sesión</a>
+    </div>
   </ng-template>
 </nav>
 <div *ngIf="flag" class="dropdown">

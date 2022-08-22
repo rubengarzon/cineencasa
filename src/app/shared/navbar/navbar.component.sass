@@ -33,14 +33,29 @@
   .arrow
     margin-top: -5px
     cursor: pointer
+
+.container-user
+  width: 23%
+  @media  (min-width: 900px ) and (max-width: 1200px)
+    width: 30%
+  @media (min-width: 800px ) and (max-width: 900px)
+    width: 50%
+  @media (min-width: 600px ) and (max-width: 800px)
+    width: 100%
+
 .dropdown
   position: absolute
   background-color: #080F19
   display: block
   text-align: end
-  width: 12em
+  width: 17%
   height: 10em
-  left: 77em
+  left: 83%
+  @media screen and (max-width: 1150px)
+    left: 75%
+    width: 25%
+  @media screen and (max-width: 800px)
+    width: 25%
   ul
     padding: 0
     li
@@ -49,9 +64,79 @@
       a
         color: gray
         text-align: center
-        &:hover
-          color: white
+      &:hover
+        color: white
 .results
   background-color: white
   width: 5em
   height: 13em
+
+@media (min-width: 700px) and (max-width: 990px)
+  .search-bar
+    text-align: unset
+    width: 38%
+@media (max-width: 870px)
+  .navbar-mobile-title
+    width: 100%
+  .navbar-brand
+    margin-left: 0em !important
+  .navbar-toggler
+    display: none
+  .search-bar
+    width: 100%
+  .container-nav-link
+    width: 100%
+    text-align: center
+  .container-user
+    width: 100%
+    margin-top: 1em
+    display: flex
+    place-content: center
+  .arrow
+    display: block
+  .dropdown
+    display: block
+    left: 0em
+    width: 100%
+  .user
+    display: flex
+    align-items: center
+@media (max-width: 870px)
+  .navbar-mobile-title
+    text-align: center
+    margin-bottom: 19px
+  .navbar
+    .navbar-brand
+      text-align: center
+    .search
+      width: 100%
+      text-align: center
+      input
+        width: 100%
+        height: 2.2em
+        border-radius: 17px
+        color: white
+        border: 0px
+        background-color: #243144
+      .arrow
+        margin-top: -5px
+        cursor: pointer
+    .dropdown
+      left: 0
+      width: 100%
+      height: 100%
+      ul
+        li
+          a
+            text-align: center
+            &:hover
+              color: white
+.results
+  width: 100%
+  height: 100%
+  ul
+    li
+      a
+        text-align: center
+        &:hover
+          color: white

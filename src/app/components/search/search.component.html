@@ -4,13 +4,13 @@
   <div *ngFor="let item of this.peliculasSvc.resultSearch">
     <div *ngIf="item.title !== undefined;else tv">
       <a routerLink="/movie/{{item.id}}">
-        <img src={{urlImagen}}{{item.poster_path}} width="150" height="200">
+        <img src={{urlImagen}}{{item.poster_path}} width="150" height="200" class="img-movie">
         <h4>{{item.title}}</h4>
       </a>
     </div>
     <ng-template #tv>
       <a routerLink="/tv/{{item.id}}">
-        <img src={{urlImagen}}{{item.poster_path}} width="150" height="200">
+        <img src={{urlImagen}}{{item.poster_path}} width="150" height="200" class="img-tv">
         <h4>{{item.name}}</h4>
       </a>
     </ng-template>

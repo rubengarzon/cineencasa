@@ -2,18 +2,20 @@
 <h1>Peliculas Populares</h1>
 <div class="bloque">
   <div class="row">
-    <div class="card" style="width: 18rem;" *ngFor="let item of listaPeliculas">
-      <a routerLink="/movie/{{item.id}}">
-        <img src={{urlImagen}}{{item.poster_path}} class="card-img-top rounded-circle" width="264" height="400">
-      </a>
-      <div class="card-footer">
-        <img src="../../../assets/like.png" width="20" (click)="addLike(item.title, item.id)" data-bs-toggle="tooltip"
-          data-bs-placement="top" title="Me gusta esta película">
+    <div class="container-card">
+      <div class="card" style="width: 18rem;" *ngFor="let item of listaPeliculas">
+        <a routerLink="/movie/{{item.id}}">
+          <img src={{urlImagen}}{{item.poster_path}} class="card-img-top rounded-circle" width="264" height="400">
+        </a>
+        <div class="card-footer">
+          <img src="../../../assets/like.png" width="20" (click)="addLike(item.title, item.id)" data-bs-toggle="tooltip"
+            data-bs-placement="top" title="Me gusta esta película">
+        </div>
       </div>
     </div>
   </div>
 </div>
-<nav aria-label="...">
+<nav aria-label="..." style="margin-left: 1em">
   <ul class="pagination pagination-sm">
     <li class="page-item" aria-current="page">
       <span class="page-link" [ngClass]="{'linkpagina' : activoPagina1 === true}"
